@@ -4,7 +4,7 @@ import { FacebookShareButton, TwitterShareButton } from 'react-share'
 
 function SocialShareIssue() {
   const shareTitle = 'Check out my tracking session!';
-  const fullURL = "https://testing-bullitt-bugs.vercel.app/maps/1"
+  const fullURL = "https://testing-bullitt-bugs.vercel.app/maps/2"
   const imageURL = `https://fastly.picsum.photos/id/9/5000/3269.jpg?hmac=cZKbaLeduq7rNB8X-bigYO8bvPIWtT-mh8GRXtU3vPc`;
 
   return (
