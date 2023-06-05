@@ -31,6 +31,13 @@
     <title>React App</title>
   </head>
   <body>
+    <script>
+      var scriptTag = document.createElement('script');
+      var scriptSrc = "https://maps.googleapis.com/maps/api/js?libraries=geometry&callback=Function.prototype";
+      scriptTag.setAttribute('src', scriptSrc);
+      scriptTag.setAttribute('async', '');
+      document.head.appendChild(scriptTag);
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

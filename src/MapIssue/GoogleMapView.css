@@ -1,0 +1,13 @@
+.map-class {
+    display: flex;
+    height: 55vh;
+    width: 100%;
+}
+
+.gm-style-iw > button {
+    display: none !important;
+}
+
+.update-number {
+    color: #E3612C;
+}
