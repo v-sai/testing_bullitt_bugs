@@ -51,10 +51,6 @@ function SocialShareIssue() {
       <TwitterShareButton url={fullURL} title={shareTitle}>
         Share on Twitter
       </TwitterShareButton>
-      <Helmet>
-        <meta property="og:image" content={imageURL} />
-        <meta name="twitter:image" content={imageURL} />
-      </Helmet>
     </div>
   );
 }
