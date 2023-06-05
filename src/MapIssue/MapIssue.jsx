@@ -10,6 +10,7 @@ import Marker_Black_Dot from "../icons/wayPoint_black.svg";
 import Marker_White_Dot from "../icons/wayPoint_white.svg";
 import Live_Marker_White from "../icons/Live_white.svg";
 import Live_Marker_Black from "../icons/Live_black.svg";
+import Black_Dot from "../icons/Live_black.svg";
 
 function MapIssue() {
   const isChildren = undefined;
@@ -225,7 +226,7 @@ function MapIssue() {
           path: trackingPath,
           geodesic: true,
           strokeColor: getStrokeColor(map),
-          strokeOpacity: 0,
+          strokeOpacity: 1,
           strokeWeight: 2,
           icons: [
             {
