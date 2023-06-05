@@ -226,11 +226,17 @@ function MapIssue() {
           path: trackingPath,
           geodesic: true,
           strokeColor: getStrokeColor(map),
-          strokeOpacity: 1,
+          strokeOpacity: 0,
           strokeWeight: 2,
           icons: [
             {
-              icon: circleSymbol,
+              icon: {
+                path: window.google.maps.SymbolPath.CIRCLE,
+                fillColor: "black", // Fill color for the circle symbol
+                fillOpacity: 1, // Opacity of the circle fill
+                strokeWeight: 0, // Stroke weight of the circle symbol
+                scale: 6, // Scale of the circle symbol
+              },
               offset: "1",
               repeat: "20px",
             },
