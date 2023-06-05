@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useLocation, useParams } from "react-router-dom";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
@@ -19,30 +18,6 @@ function SocialShareIssue() {
   const fullURL = `https://testing-bullitt-bugs.vercel.app/maps/${id}`;
   const imageURL = randomImage;
 
-  useEffect(() => {
-    // Assuming you have the selected product details available
-    var selectedProduct = {
-      title: shareTitle,
-      description: "Product Description",
-      image_url: randomImage,
-      page_url: fullURL,
-    };
-
-    // Update the og:image tag dynamically
-    document
-      .querySelector('meta[property="og:title"]')
-      .setAttribute("content", selectedProduct.title);
-    document
-      .querySelector('meta[property="og:description"]')
-      .setAttribute("content", selectedProduct.description);
-    document
-      .querySelector('meta[property="og:image"]')
-      .setAttribute("content", selectedProduct.image_url);
-    document
-      .querySelector('meta[property="og:url"]')
-      .setAttribute("content", selectedProduct.page_url);
-  }, []);
-
   return (
     <div>
       <FacebookShareButton url={fullURL} quote={shareTitle}>
@@ -51,6 +26,12 @@ function SocialShareIssue() {
       <TwitterShareButton url={fullURL} title={shareTitle}>
         Share on Twitter
       </TwitterShareButton>
+      <Helmet>
+        <meta property="og:image" content={imageURL} />
+        <meta property="og:title" content={shareTitle} />
+        <meta property="og:url" content={fullURL} />
+        <meta name="twitter:image" content={imageURL} />
+      </Helmet>
     </div>
   );
 }
