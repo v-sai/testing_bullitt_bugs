@@ -1,11 +1,47 @@
-import React from 'react'
-import { Helmet } from 'react-helmet';
-import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import React from "react";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { useLocation, useParams } from "react-router-dom";
+import { FacebookShareButton, TwitterShareButton } from "react-share";
 
 function SocialShareIssue() {
-  const shareTitle = 'Check out my tracking session!';
-  const fullURL = "https://testing-bullitt-bugs.vercel.app/maps/2"
-  const imageURL = `https://fastly.picsum.photos/id/9/5000/3269.jpg?hmac=cZKbaLeduq7rNB8X-bigYO8bvPIWtT-mh8GRXtU3vPc`;
+  let { id } = useParams();
+  console.log(id);
+  const imgs = [
+    "https://fastly.picsum.photos/id/17/2500/1667.jpg?hmac=HD-JrnNUZjFiP2UZQvWcKrgLoC_pc_ouUSWv8kHsJJY",
+    "https://fastly.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I",
+    "https://fastly.picsum.photos/id/22/4434/3729.jpg?hmac=fjZdkSMZJNFgsoDh8Qo5zdA_nSGUAWvKLyyqmEt2xs0",
+    "https://fastly.picsum.photos/id/27/3264/1836.jpg?hmac=p3BVIgKKQpHhfGRRCbsi2MCAzw8mWBCayBsKxxtWO8g",
+  ];
+  const randomImage = imgs[id];
+
+  const shareTitle = `Check out my tracking session ${id}!`;
+  const fullURL = `https://testing-bullitt-bugs.vercel.app/maps/${id}`;
+  const imageURL = randomImage;
+
+  useEffect(() => {
+    // Assuming you have the selected product details available
+    var selectedProduct = {
+      title: shareTitle,
+      description: "Product Description",
+      image_url: randomImage,
+      page_url: fullURL,
+    };
+
+    // Update the og:image tag dynamically
+    document
+      .querySelector('meta[property="og:title"]')
+      .setAttribute("content", selectedProduct.title);
+    document
+      .querySelector('meta[property="og:description"]')
+      .setAttribute("content", selectedProduct.description);
+    document
+      .querySelector('meta[property="og:image"]')
+      .setAttribute("content", selectedProduct.image_url);
+    document
+      .querySelector('meta[property="og:url"]')
+      .setAttribute("content", selectedProduct.page_url);
+  }, []);
 
   return (
     <div>
@@ -20,7 +56,7 @@ function SocialShareIssue() {
         <meta name="twitter:image" content={imageURL} />
       </Helmet>
     </div>
-  )
+  );
 }
 
-export default SocialShareIssue
+export default SocialShareIssue;
