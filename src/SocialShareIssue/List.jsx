@@ -1,5 +1,4 @@
 import React from "react";
-import SocialShareIssue from "./SocialShareIssue";
 import { useNavigate } from "react-router-dom";
 
 function List() {
