@@ -6,7 +6,7 @@ function SocialShareIssue() {
   let { id } = useParams();
 
   const shareTitle = `Check out my tracking session ${id}!`;
-  const fullURL = `https://testing-bullitt-bugs.vercel.app/sessions/${id}`;
+  const fullURL = `https://testing-bullitt-bugs-nbu93yamp-v-sai.vercel.app/sessions/${id}`;
 
   return (
     <div>
