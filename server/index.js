@@ -64,7 +64,6 @@ app.get('/*', (req, res, next) => {
         console.error('Error during file reading', err);
         return res.status(404).end();
       }
-  
       // You can add default meta tags or handle other routes here if needed
   
       return res.send(htmlData);
