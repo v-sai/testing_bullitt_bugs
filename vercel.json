@@ -8,8 +8,8 @@
     ],
     "routes":[
         {
-            "src":"./server/index.js",
-            "dest":"/"
+            "src":"/(.*)",
+            "dest":"server/index.js"
         }
     ]
 }
