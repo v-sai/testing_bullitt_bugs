@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const fs = require("fs");
 const app = express();
-var morgan = require('morgan')
 
 const PORT = process.env.PORT || 3000;
 const indexPath = path.resolve(__dirname, '..', 'build', 'index.html');
@@ -19,8 +18,6 @@ app.use(express.static(
     path.resolve(__dirname, '..', 'build'),
     { maxAge: '30d' },
 ));
-
-morgan('tiny')
 
 const getPostData = () => {
     const randNum = Math.floor(Math.random() * imgs.length);

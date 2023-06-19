@@ -7,7 +7,7 @@ function SocialShareIssue() {
 
   const shareTitle = `Check out my tracking session ${id}!`;
   const appURL = window?.location?.hostname
-  const fullURL = `${appURL}/${id}`;
+  const fullURL = `${appURL}/sessions/${id}`;
 
   return (
     <div>

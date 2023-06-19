@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import MapIssue from "./MapIssue/MapIssue.jsx";
 import SocialShareIssue from "./SocialShareIssue/SocialShareIssue.jsx";
 import List from "./SocialShareIssue/List.jsx";
-import RohitIssue from "./RohitIssue/RohitIssue.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,10 +20,6 @@ const router = createBrowserRouter([
     path: "/sessions/:id",
     element: <SocialShareIssue />
   },
-  {
-    path: "/rohit",
-    element: <RohitIssue />
-  }
 ]);
 
 export default router;
