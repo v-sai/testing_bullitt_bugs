@@ -38,7 +38,7 @@ app.get('/sessions/:id', (req, res, next) => {
             return res.status(404).end()
         }
         // get post info
-        const postId = req.query;
+        const postId = req.params.id;
         console.log(postId)
         const post = getPostData();
 
@@ -50,7 +50,7 @@ app.get('/sessions/:id', (req, res, next) => {
             .replace('__META_OG_TITLE__', post.title)
             .replace('__META_OG_DESCRIPTION__', post.description)
             .replace('__META_DESCRIPTION__', post.description)
-            .replace('__META_OG_IMAGE__', post.thumbnail)
+            .replace('__META_OG_IMAGE__', postId < 3 ? imgs[postId] : post.thumbnail)
         return res.send(htmlData);
     });
 });
