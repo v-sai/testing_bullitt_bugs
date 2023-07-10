@@ -51,7 +51,7 @@ app.get('/sessions/:id', (req, res, next) => {
             .replace('__META_OG_TITLE__', postId)
             .replace('__META_OG_DESCRIPTION__', `This is description of session ${postId}`)
             .replace('__META_DESCRIPTION__', `This is description of session ${postId}`)
-            .replace('__META_OG_IMAGE__', postId <= 4 ? imgs[postId] : post.thumbnail)
+            .replace('__META_OG_IMAGE__', postId <= 4 ? imgs[postId] : "https://maps.googleapis.com/maps/api/staticmap?center=17.47684,78.4149687%20&zoom=-11&size=900x400&maptype=terrain%20&path=color:0x000000FF|weight:5|17.47984,78.32|17.27684,78.5234|17.47684,78.5234|17.67684,78.5234|17.4785952,78.3065374%20&markers=icon:https://sai-v.onrender.com/start_green_pin.png|17.47984,78.32&markers=icon:https://sai-v.onrender.com/waypoint_ornage_black_pin.png|17.27684,78.5234&markers=icon:https://sai-v.onrender.com/waypoint_ornage_black_pin.png|17.47684,78.5234&markers=icon:https://sai-v.onrender.com/waypoint_ornage_black_pin.png|17.67684,78.5234&markers=icon:https://sai-v.onrender.com/end_red_pin.png|17.4785952,78.3065374%20&key=AIzaSyBLjw9CHmkZyyxSF2mlS3aTkcOKlcfxnBc")
         return res.send(htmlData);
     });
 });
