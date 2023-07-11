@@ -53,9 +53,9 @@ app.get('/sessions/:id', (req, res, next) => {
             .replace('__META_DESCRIPTION__', `This is description of session ${postId}`)
             .replace('__META_OG_IMAGE__', postId <= 4 ? imgs[postId] : post.thumbnail)
 
-            // .replace("__META_TWITTER_TITLE__", postId)
-            // .replace("__META_TWITTER_DESCRIPTION__",  `This is description of session ${postId}`)
-            // .replace("__META_TWITTER_IMAGE__", postId <= 4 ? imgs[postId] : post.thumbnail)
+            .replace("__META_TWITTER_TITLE__", postId)
+            .replace("__META_TWITTER_DESCRIPTION__",  `This is description of session ${postId}`)
+            .replace("__META_TWITTER_IMAGE__", postId <= 4 ? imgs[postId] : post.thumbnail)
         return res.send(htmlData);
     });
 });
