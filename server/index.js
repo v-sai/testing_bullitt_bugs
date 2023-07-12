@@ -8,9 +8,6 @@ const indexPath = path.resolve(__dirname, '..', 'build', 'index.html');
 
 const imgs = [
     "https://fastly.picsum.photos/id/17/2500/1667.jpg?hmac=HD-JrnNUZjFiP2UZQvWcKrgLoC_pc_ouUSWv8kHsJJY",
-    "https://fastly.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I",
-    "https://fastly.picsum.photos/id/22/4434/3729.jpg?hmac=fjZdkSMZJNFgsoDh8Qo5zdA_nSGUAWvKLyyqmEt2xs0",
-    "https://fastly.picsum.photos/id/27/3264/1836.jpg?hmac=p3BVIgKKQpHhfGRRCbsi2MCAzw8mWBCayBsKxxtWO8g",
     `https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=1200x628&maptype=roadmap&format=png&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=${process.env.API_KEY}`
 ];
 
@@ -20,13 +17,12 @@ app.use(express.static(
     { maxAge: '30d' },
 ));
 
-const getPostData = () => {
-    const randNum = Math.floor(Math.random() * imgs.length);
-    const randomImg = imgs[randNum];
+const getPostData = (postId) => {
+    const randomImg = imgs[postId % 2 === 0 ? 0 : 1];
     return {
         thumbnail: randomImg,
-        title: `Session ${randNum}`,
-        description: `This is desc of ${randNum}`,
+        title: `Session ${postId}`,
+        description: `This is desc of ${postId}`,
     }
 }
 
@@ -41,7 +37,7 @@ app.get('/sessions/:id', (req, res, next) => {
         // get post info
         const postId = req.params.id;
         console.log(postId)
-        const post = getPostData();
+        const post = getPostData(postId);
 
         // inject meta tags
         htmlData = htmlData.replace(
@@ -54,8 +50,8 @@ app.get('/sessions/:id', (req, res, next) => {
             .replace('__META_OG_IMAGE__', postId <= 4 ? imgs[postId] : post.thumbnail)
 
             .replace("__META_TWITTER_TITLE__", postId)
-            .replace("__META_TWITTER_DESCRIPTION__",  `This is description of session ${postId}`)
-            .replace("__META_TWITTER_IMAGE__", postId <= 4 ? imgs[postId] : post.thumbnail)
+            .replace("__META_TWITTER_DESCRIPTION__", `This is description of session ${postId}`)
+            .replace("__META_TWITTER_IMAGE__", post.thumbnail)
         return res.send(htmlData);
     });
 });
