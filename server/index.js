@@ -51,7 +51,7 @@ app.get('/sessions/:id', (req, res, next) => {
 
             .replace("__META_TWITTER_TITLE__", postId)
             .replace("__META_TWITTER_DESCRIPTION__", `This is description of session ${postId}`)
-            .replace("__META_TWITTER_IMAGE__", post.thumbnail)
+            // .replace("__META_TWITTER_IMAGE__", post.thumbnail)
         return res.send(htmlData);
     });
 });
